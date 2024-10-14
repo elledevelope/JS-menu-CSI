@@ -15,38 +15,34 @@ const sousMenu = [  // <li> for the sub-menu (child-sub)
 
 //----------------------------------------------------FONCTIONS :
 function openMenu(liIdNumber) {
-    //Creating sub-<ul> on click on main-<li> :
-    document.querySelector("#item" + liIdNumber).addEventListener("click", function () {
-        console.log("Hello");
-
-        // Close any open submenus
-        for (let i = 0; i < sousMenu.length; i++) {
-            // if (document.querySelector(#item${i} ul) != undefined) {
-            //     document.querySelector(#item${i} ul).remove();
-            // };
-            const openSubMenu = document.querySelector(`#item${i} ul`);
-            if (openSubMenu) openSubMenu.remove(); // Only remove if the submenu exists
-        }
-
-
-        // Check if the submenu for this item already exists
-        let existingSubMenu = document.querySelector(`#item${liIdNumber} ul`);
-        if (!existingSubMenu) {  // If it doesn't exist, create a new one
-        // if (document.querySelector(#item${liIdNumber} ul) != undefined)
-            console.log("HelloHello");
-            const ulSubMenu = document.createElement("ul");  // create sub-<ul>
-            ulSubMenu.className = "ulSubMenu";
-            document.querySelector(`#item${liIdNumber}`).append(ulSubMenu); // Append sub-<ul> to <li>
-
-            // Create and append sub-<li> elements 
-            sousMenu[liIdNumber].forEach(function (element) {
-                const liSubMenu = document.createElement("li");
-                liSubMenu.innerText = element; // Insert elements from arraySousMenu
-                ulSubMenu.append(liSubMenu); // Append each sub-item to the sub-menu
-            });
-        }
-    });
-}
+        // ajoutez un événement click sur un elementHTML avec un id "item0"
+        document.querySelector("#item" + liIdNumber).addEventListener("click", function () {
+            // je supprime avec une boucle tous les sous menu ouverts (not undefined)
+            if (document.body.contains(document.querySelector(`#item${liIdNumber} ul`))) {
+                document.querySelector(`#item${liIdNumber} ul`).remove();
+            } else {
+                for (let i = 0; i < sousMenu.length; i++) {
+                    if (document.querySelector(`#item${i} ul`) != undefined) {
+                        document.querySelector(`#item${i} ul`).remove();
+                    }
+                }
+                //creation d'un elementHTML ul pour créer le sous menu
+                const ulSubMenu = document.createElement("ul");
+                //insertion de cet element dans un parent AVANT son contenu
+                //document.querySelector("#item0").prepend(ulSubMenu);
+                //insertion de cet element dans un parent APRES son contenu
+                document.querySelector("#item" + liIdNumber).append(ulSubMenu);
+                sousMenu[liIdNumber].forEach(function (element, index) {
+                    const liSubMenu = document.createElement("li");
+                    ulSubMenu.className = "ulSubMenu";
+                    liSubMenu.innerText = element;
+                    ulSubMenu.append(liSubMenu);
+                });
+            }
+        })
+    }
+    
+    
 
 //----------------------------------------------------LOGIQUE de FONCTION :
 // Loop through the main menu items and add them as <li> elements inside the main <ul>
