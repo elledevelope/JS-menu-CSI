@@ -7,29 +7,28 @@ const menuPrincipal = [ // <li> for the main menu (parent-main)
     "MainItem3"
 ];
 
-const sousMenu0 = [ //  <li> for the sub-menu (child-sub)
-    "1--SubItem"
+const sousMenu = [  // <li> for the sub-menu (child-sub)
+    ["1--SubItem"],
+    ["2--SubItem", "3--SubItem"],
+    ["4--SubItem", "5--SubItem", "6--SubItem"]
 ];
-
-const sousMenu1 = [
-    "1--SubItem",
-    "2--SubItem"
-];
-
-const sousMenu2 = [
-    "1--SubItem",
-    "2--SubItem",
-    "3--SubItem"
-];
-
 
 //----------------------------------------------------FONCTIONS :
 let switchMenu1 = false; //<--------------- initial state
 
-function openMenu(liIdNumber, sousMenu) { 
-    //Creating sub-<ul> on click on main-<li>
-    document.getElementById(`item${liIdNumber}`).addEventListener("click", function () { // Removed '#' from getElementById
-        console.log("Hello");
+function openMenu(liIdNumber) {
+    // console.log(liIdNumber);
+
+    //Creating sub-<ul> on click on main-<li> :
+    document.getElementById(`item${liIdNumber}`).addEventListener("click", function () {
+        // console.log("Hello");
+
+        // closing sub-menus :
+        for (let i = 0; i < sousMenu.length; i++) {
+            if (document.querySelector(`#item${liIdNumber} ul`) != undefined) {
+                document.querySelector(`#item${liIdNumber} ul`).remove();
+            }
+        };
 
         if (!switchMenu1) { // Evaluates to true if switchMenu1 is false
             console.log(switchMenu1);
@@ -38,9 +37,9 @@ function openMenu(liIdNumber, sousMenu) {
             document.querySelector(`#item${liIdNumber}`).append(ulSubMenu); // Insert sub-<ul> at the end of <li>
 
             // Creating sub-<li>
-            sousMenu.forEach(function (element) {
+            sousMenu[liIdNumber].forEach(function (element) {
                 const liSubMenu = document.createElement("li");
-                liSubMenu.innerText = element; // Insert elements from sousMenu
+                liSubMenu.innerText = element; // Insert elements from arraySousMenu
                 ulSubMenu.append(liSubMenu); // Append each sub-item to the sub-menu
             });
         } else {
@@ -59,11 +58,11 @@ function openMenu(liIdNumber, sousMenu) {
 // Loop through the main menu items and add them as <li> elements inside the main <ul>
 let i = 0;
 while (i < menuPrincipal.length) {
+    let n = i;
     navUl.innerHTML += `<li id='item${i}'>${menuPrincipal[i]}</li>`;  // Create <li> with id = item0, item1, etc.
     i++;
 };
 
-// Call openMenu for each main item with its corresponding submenu
-openMenu(0, sousMenu0); 
-openMenu(1, sousMenu1);
-openMenu(2, sousMenu2); 
+openMenu(0);
+openMenu(1);
+openMenu(2);
