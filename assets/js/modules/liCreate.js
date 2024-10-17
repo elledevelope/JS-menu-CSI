@@ -11,6 +11,8 @@ const liCreate = (parent, txt, idName = undefined, classArray = undefined) => { 
     };
 
     parent.append(li);
+
+    return li; // <li>
 };
 
 
