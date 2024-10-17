@@ -1,5 +1,6 @@
 const destroyElement = (idName) => {
-    document.getElementById(idName).remove(); //removes id of sub UL
+    // console.dir(idName);
+    document.querySelector(idName).remove(); //removes id of sub UL
 };
 
 export { destroyElement };
