@@ -3,12 +3,11 @@ import { menuData } from "./menuData.js";
 import { ulCreate } from "./ulCreate.js";
 
 const displaySubMenu = (index, classArray = undefined) => {
-    const subMenuUL = ulCreate(menu, "idSubMenuUL" + index, classArray); // const ulCreate = (parent, idName, classArray = [])
-    
-    // menuData.forEach(element => {
-        
-    // });
-    liCreate(subMenuUL, menuData[index].sousMenu[0]);
+    const ulSubMenu = ulCreate(menu, "idUlSubMenu" + index, classArray); // const ulCreate = (parent, idName, classArray = [])
+
+    menuData[index].sousMenu.forEach((element, index2) => {
+        liCreate(ulSubMenu, element);  // sub <li>
+    });
 };
 
 export { displaySubMenu };
