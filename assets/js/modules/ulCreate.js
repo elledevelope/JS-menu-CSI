@@ -1,8 +1,13 @@
-const ulCreate = (parent, idName, classArray = []) => {
+const ulCreate = (parent, idName, classArray = undefined) => {
     const ul = document.createElement("ul");
     ul.id = idName;
-    ul.classList.add(classArray);
+    if (classArray != undefined) {
+        ul.classList.add(classArray);
+    };
+
     parent.append(ul);
+
+    return ul; // <ul>
 };
 
 export { ulCreate };
