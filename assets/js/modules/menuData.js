@@ -1,8 +1,8 @@
 const menuData = [
     {
-        title: "Item1",
-        sousMenu: [
-            "Item1",
+        title: "Item1", // li principal
+        sousMenu: [ // sub UL
+            "Item1", // sub LI
             "Item2",
             "Item3",
             "Item4",
