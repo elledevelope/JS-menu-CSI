@@ -57,11 +57,13 @@ nav h1 {
     font-weight: 400;
 }
 
-nav ul {
+nav #ulPrincipale {
     display: flex;
     list-style-type: none;
     font-size: 20px;
 }
+
+
 
 nav ul li {
     margin: auto 40px;
@@ -74,9 +76,7 @@ nav ul li:hover {
     color: darkslategray;
 }
 
-.ulSubMenu {
-    /* list-style-type: circle; */
-    /* padding: 10px; */
+/* .ulSubMenu {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -84,9 +84,32 @@ nav ul li:hover {
     -webkit-box-shadow: 0px 6px 5px 0px rgba(122, 106, 106, 0.75);
     -moz-box-shadow: 0px 6px 5px 0px rgba(122, 106, 106, 0.75);
     background-color: #dad1c0ac;
-}
+} */
 
-.ulSubMenu>li {
+/* .ulSubMenu>li {
     padding: 10px;
     position: relative;
+} */
+
+nav #ulPrincipale #idUlSubMenu0,
+nav #ulPrincipale #idUlSubMenu1,
+nav #ulPrincipale #idUlSubMenu2,
+nav #ulPrincipale #idUlSubMenu3,
+nav #ulPrincipale #idUlSubMenu4,
+nav #ulPrincipale #idUlSubMenu5 {
+    list-style-type: none;
+    position: absolute;
+    box-shadow: 0px 6px 5px 0px rgba(122, 106, 106, 0.75);
+    -webkit-box-shadow: 0px 6px 5px 0px rgba(122, 106, 106, 0.75);
+    -moz-box-shadow: 0px 6px 5px 0px rgba(122, 106, 106, 0.75);
+    background-color: #dad1c0ac;
+}
+
+nav #ulPrincipale #idUlSubMenu0 li,
+nav #ulPrincipale #idUlSubMenu1 li, 
+nav #ulPrincipale #idUlSubMenu2 li,
+nav #ulPrincipale #idUlSubMenu3 li,
+nav #ulPrincipale #idUlSubMenu4 li,
+nav #ulPrincipale #idUlSubMenu5 li  {
+    padding: 10px;
 }
