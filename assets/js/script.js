@@ -31,4 +31,6 @@ menuData.forEach((element, index) => {
 
 });
 
-
+//Exercice : empêcher le click direct sur les sous Menu (ul)
+// Ajouter des icônes dans les <li> de sous menu a partir de class menuData
+// Au click sur l'element #burger : afficher ou faire disparaître le #header-nav ul

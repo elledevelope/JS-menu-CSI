@@ -6,6 +6,10 @@ const menuData = [
             "Item2",
             "Item3",
             "Item4"
+        ],
+        icon: [
+            "fa-solid",
+            "fa-bars"
         ]
     },
     {
