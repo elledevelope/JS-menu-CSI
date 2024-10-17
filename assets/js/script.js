@@ -12,7 +12,8 @@ menuData.forEach((element, index) => {
     const menuItem = liCreate(menu, element.title, "menu" + index); // Pass globalThis.menu as parent
     // console.dir(index); // ---> 0, 1, ...
 
-    menuItem.addEventListener("click", () => {
+    menuItem.addEventListener("click", (e) => {
+        e.stopPropagation();
         // console.dir(menuItem); // ---> li#menu0, li#menu1, ...
 
         if (document.contains(document.querySelector("#idUlSubMenu" + index))) {
@@ -21,8 +22,7 @@ menuData.forEach((element, index) => {
             menuData.forEach((element2, index2) => {
                 if (document.contains(document.querySelector("#idUlSubMenu" + index2))) {
                     destroyElement("#idUlSubMenu" + index2);
-                }
-                // destroyElement("#idUlSubMenu" + index2);
+                };
             });
         }
 
